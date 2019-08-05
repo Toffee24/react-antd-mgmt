@@ -4,7 +4,6 @@ import {Link, withRouter} from 'react-router-dom'
 import styles from './HeaderCustom.module.less'
 import PropTypes from 'prop-types'
 import {observer, inject} from 'mobx-react'
-import {FormattedMessage} from 'react-intl'
 
 const {Header} = Layout
 
@@ -60,7 +59,6 @@ class HeaderCustom extends Component {
   }
 
   render() {
-    console.log(this._breadcrumbList)
     const {location} = this.props
     return (
       <Header className={styles.header}>
@@ -121,7 +119,7 @@ class HeaderCustom extends Component {
                 </Fragment>}
             >
               <Menu.Item key='SignOut'>
-                <FormattedMessage id='intl.signOut'/>
+                退出登录
               </Menu.Item>
             </Menu.SubMenu>
           </Menu>

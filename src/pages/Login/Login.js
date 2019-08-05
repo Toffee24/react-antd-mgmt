@@ -2,7 +2,6 @@ import React, {PureComponent, Fragment} from 'react'
 import {Button, Row, Form, Input, Icon} from 'antd'
 import styles from './Login.module.less'
 import {setToken} from '../../utils/tools'
-import {FormattedMessage} from 'react-intl'
 import {inject} from 'mobx-react'
 
 const FormItem = Form.Item
@@ -59,7 +58,7 @@ class Login extends PureComponent {
                 type='primary'
                 htmlType={'submit'}
               >
-                <FormattedMessage id='intl.signIn'/>
+                登录
               </Button>
               <p>
                 <span>Username：guest</span>

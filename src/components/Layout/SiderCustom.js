@@ -14,18 +14,20 @@ class SiderCustom extends Component {
   static getDerivedStateFromProps(props, state) {
     if (props.collapsed !== state.collapsed || props.location.pathname !== SiderCustom.pathname) {
       SiderCustom.pathname = props.location.pathname
+      SiderCustom.openKey = state.openKey
+      const config = SiderCustom.setMenuOpen(props,SiderCustom.openKey)
       return {
         collapsed: props.collapsed,
-        ...SiderCustom.setMenuOpen(props),
+        ...config
       }
     }
     return null
   }
 
-  static setMenuOpen = (props) => {
+  static setMenuOpen = (props, openKey) => {
     const {pathname} = props.location
     return {
-      openKey: props.collapsed ? [] : SiderCustom.openKey,
+      openKey: props.collapsed ? [] : openKey,
       selectedKey: pathname
     }
   }
@@ -42,13 +44,20 @@ class SiderCustom extends Component {
   componentDidMount() {
     SiderCustom.openKey = [this.props.location.parentKey] || []
     SiderCustom.pathname = this.props.location.pathname
-    const state = SiderCustom.setMenuOpen(this.props)
+    const state = SiderCustom.setMenuOpen(this.props, SiderCustom.openKey)
     this.setState(state)
   }
 
   menuClick = e => {
+    let config = {
+      selectedKey: e.key,
+      openKey: []
+    }
+    if(e.keyPath.length > 1) {
+      config.openKey = this.state.openKey
+    }
     this.setState({
-      selectedKey: e.key
+      ...config
     })
   }
 
