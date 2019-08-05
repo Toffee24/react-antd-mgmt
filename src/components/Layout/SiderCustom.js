@@ -14,7 +14,7 @@ class SiderCustom extends Component {
   static getDerivedStateFromProps(props, state) {
     if (props.collapsed !== state.collapsed || props.location.pathname !== SiderCustom.pathname) {
       SiderCustom.pathname = props.location.pathname
-      SiderCustom.openKey = state.openKey
+      SiderCustom.openKey = props.location.pathname.split('/').length <= 3 ? state.openKey : [props.location.pathname.replace(props.location.pathname.match(/\/.+(\/.+$)/)[1], '')]
       const config = SiderCustom.setMenuOpen(props,SiderCustom.openKey)
       return {
         collapsed: props.collapsed,
@@ -110,7 +110,7 @@ class SiderCustom extends Component {
         collapsible
         collapsed={this.props.collapsed}
       >
-        <div className='logo'/>
+        <div className='logo'>丙晟科技</div>
         <Menu
           theme='dark'
           mode='inline'

@@ -7,37 +7,33 @@ import withRouter from 'react-router-dom/withRouter';
 
 @inject('rootStore')
 class Dashboard extends Component {
-  constructor(props){
-    super(props)
-    console.log(props)
-  }
-  handleClick() {
-    const root = toJS(this.props.rootStore.routes)
-    root.pop()
-    this.props.rootStore.changeRoutes(root)
-  }
-  handleClick2() {
+  handleClickNavigate() {
     this.props.history.push('/app/message/option1')
+  }
+  handleClickNavigateBack() {
+    this.props.history.go(-1)
   }
   render() {
     return (
       <div>
         <span className={`test-global ${styles.test}`}>Dashboard</span>
         <Button
+          style={{marginRight:'5px'}}
           type='primary'
           onClick={() => {
-            this.handleClick()
+            this.handleClickNavigate()
           }}
         >
-          Link to profile
+          路由跳转
         </Button>
+
         <Button
           type='primary'
           onClick={() => {
-            this.handleClick2()
+            this.handleClickNavigateBack()
           }}
         >
-          hello
+          路由回退
         </Button>
       </div>
     )

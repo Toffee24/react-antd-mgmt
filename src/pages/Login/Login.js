@@ -75,13 +75,12 @@ class Login extends PureComponent {
                   title='github'
                   rel="noopener noreferrer"
                   target='_blank'
-                  href='https://github.com/shx996/react-antd-admin'
                 >
                 <Icon type="github"/>
               </a>
               </span>
             </div>
-            <div className={styles['footer-copyright']}>Ant Design Admin © 2019 shx996</div>
+            <div className={styles['footer-copyright']}>Ant Design Admin © 2019</div>
           </footer>
         </div>
       </Fragment>
